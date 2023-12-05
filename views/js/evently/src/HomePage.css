@@ -1,0 +1,35 @@
+html {
+    background-color: #EE6123;
+    width: auto;
+    height: auto;
+    overflow: auto;
+}
+
+#MainText {
+    background-color: #EE6123;
+    font-size: 30px;
+    font-family: 'Inter';
+    text-align: center;
+}
+
+.buttons{
+    background-color: #2E0096;
+    color: white;
+
+    font-size: 30px;
+    text-decoration: none;
+
+    width: 400px;
+    height: 115px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 80px;
+    padding-right: 80px;
+    border-radius: 8px;
+}
+
+.Text{
+    font-size: 80px;
+    color: white;
+    padding-top: 30px;
+}

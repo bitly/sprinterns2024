@@ -1,0 +1,65 @@
+{
+    "uri": "294c82b8.mochi.monster/m/keyword-294c82b8",
+    "version": "1.0.0",
+    "content": {
+        "display_name": "Welcome",
+        "description": "This LIB was created by zamboni_api"
+    },
+    "appearance": {
+        "background_color": "linear-gradient(180deg, #042A44, #147A8E)",
+        "hide_bitly_logo": false,
+        "avatar_image_guid": "In1ndQU9ejr",
+        "text_color": "#FFFFFF",
+        "layout": "classic",
+        "style_preference": "custom",
+        "font": "Anton",
+        "background_preference": "???",
+        "background_image_guid": "",
+        "description_color": "#FFFFFF",
+        "bottom_background_color": ""
+    },
+    "buttons": [
+        {
+            "type": "bitlink",
+            "sort_order": 1,
+            "schedule_start": "2023-01-23T12:41:56+0000",
+            "schedule_end": "5000-04-22T00:00:00+0000",
+            "appearance": {
+                "is_pinned": false,
+                "background_color": "#FFFFFF",
+                "text_color": "#042A44",
+                "shape": 0,
+                "shaddow": 0,
+                "social_icon_color": "color",
+                "social_icon_layout": "icon",
+                "social_icon_position": "top"
+            },
+            "content": {
+                "title": "Generated Microsite Link: 1",
+                "target": "294c82b8.mochi.monster/GzmGGC",
+                "channel": ""
+            }
+        },
+        {
+            "type": "bitlink",
+            "sort_order": 2,
+            "schedule_start": "2023-01-23T12:41:56+0000",
+            "schedule_end": "5000-04-22T00:00:00+0000",
+            "appearance": {
+                "is_pinned": false,
+                "background_color": "#FFFFFF",
+                "text_color": "#042A44",
+                "shape": 0,
+                "shaddow": 0,
+                "social_icon_color": "color",
+                "social_icon_layout": "icon",
+                "social_icon_position": "top"
+            },
+            "content": {
+                "title": "Generated Microsite Link: 0",
+                "target": "bitly.org/GzmoN9",
+                "channel": ""
+            }
+        }
+    ]
+}

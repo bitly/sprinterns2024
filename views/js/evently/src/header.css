@@ -1,0 +1,23 @@
+.Header {
+  width: 100%;
+  display: inline-block;
+  background-color: rgba(238, 97, 35);
+  color: rgba(255, 255, 255, 0.8);
+  text-indent: 150px;
+  font-size: 30px;
+  font-family: 'Inter';
+}
+
+#createLogo {
+background-color: white;
+border-radius: 50%;
+padding: 7px;
+
+height: 100px;
+width: 100px;
+
+top: 100px;
+left: 10px;
+position: absolute;
+overflow: hidden;
+}

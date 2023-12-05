@@ -1,0 +1,66 @@
+{
+    "launchpad_id": "Mn1nfx8wWWF",
+    "is_edited": true,
+    "domain": "bitly.org",
+    "keyword": "testlm",
+    "socials": [],
+    "draft_id": "Mn1nfCtCrDr",
+    "is_active": true,
+    "uri": "bitly.org/m/testlm",
+    "buttons": [
+        {
+            "launchpad_id": "Mn1nfx8wWWF",
+            "bitlink": "bitly.org/GzmGHY",
+            "button_id": "Ln1nfA7KfG0",
+            "keyword": "",
+            "title": "Link 1",
+            "schedule_start": "",
+            "is_active": true,
+            "domain": "bitly.org",
+            "schedule_end": "",
+            "content": {
+                "link_title": "Link 1",
+                "is_pinned": false,
+                "bitlink_id": "bitly.org/GzmGHY"
+            },
+            "sort_order": 1,
+            "long_url": "http://www.google.com/",
+            "is_pinned": false,
+            "scheme": "https",
+            "type": "bitlink"
+        }
+    ],
+    "launchpad_appearance": {
+        "hide_bitly_logo": false,
+        "display_name": "Welcome!",
+        "description": "Description bb",
+        "launchpad_text_color": "#0B1254",
+        "social_icon_color": "",
+        "description_color": "#0B1254",
+        "button_appearance": {
+            "button_background": "#0B1254",
+            "button_text_color": "#FFFFFF",
+            "shadow": 0,
+            "shape": 0
+        },
+        "bottom_background": "",
+        "avatar_image_url": "",
+        "avatar_upload_image": "https://storage.googleapis.com/bitly-image-upload-sandbox/In1nfJY9pfd",
+        "style_preference": "theme",
+        "background": "linear-gradient(180deg, #FF5371, #FAD28F)",
+        "social_icon_position": "",
+        "theme_id": 8,
+        "font": "Anton",
+        "social_icon_layout_style": "",
+        "layout": "classic"
+    },
+    "images": {
+        "profile": {
+            "url": "https://storage.googleapis.com/bitly-image-upload-sandbox/In1nfJY9pfd",
+            "image_use": "profile",
+            "crop": "{\"min\":{\"x\":84,\"y\":0},\"max\":{\"x\":555,\"y\":470}}",
+            "image_guid": "In1nfJY9pfd"
+        }
+    },
+    "scheme": "https"
+}
