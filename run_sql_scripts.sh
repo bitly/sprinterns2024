@@ -1,5 +1,6 @@
 #!/bin/bash
-# This bash script loops through the sql directory and applies the sql to our db
-
+# This bash script runs all SQL scripts relating to the events database
 cd sql
-for FILE in *; do mysql -u root -p"admin123" < $FILE; done
+
+mysql -u root -p"admin123" < create_database_events.sql
+mysql -u root -p"admin123" < create_event_table.sql
