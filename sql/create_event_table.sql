@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `event` (
     `description` text NOT NULL,
     `contact_info` text NOT NULL,
     `public_private` text NOT NULL,
+    `image_url` text DEFAULT NULL,
     `num_of_RSVP` int NOT NULL,
     `max_attendees` int NOT NULL,
 	`created_at` timestamp NOT NULL default CURRENT_TIMESTAMP

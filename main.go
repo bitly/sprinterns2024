@@ -26,25 +26,14 @@ func main() {
 
 	}
 
-	// This endpoint will get and list all events
-	// api.GET("/events", handlers.EventHandler)
+	// EVENTS
 
-	// This endpoint will be able to create events
+	// CREATE an event
 	api.POST("/events", handlers.CreateEvent)
 	api.OPTIONS("/events", handlers.HandleCors)
-
+	// GET an event
 	api.GET("/event/:eventID", handlers.GetEvent)
 	api.OPTIONS("/event/:eventID", handlers.HandleCors)
-
-
-	// This endpoint will update info for an event
-	api.PATCH("/event/:eventID", handlers.UpdateEvent)
-
-	api.POST("/event/:eventID/rsvp", handlers.CreateRSVP)
-
-	api.GET("/RSVP/:responseID", handlers.GetRSVP)
-
-	api.DELETE("/event/:eventID", handlers.DeleteEvent)
 
 	// Start and run the server
 	router.Run(":3000")

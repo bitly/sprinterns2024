@@ -11,4 +11,5 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.16 // indirect
 	github.com/poy/onpar v1.1.2 // indirect
 	github.com/ziutek/mymysql v1.5.4 // indirect
+	google.golang.org/appengine v1.1.0
 )
