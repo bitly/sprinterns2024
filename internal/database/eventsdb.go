@@ -1,10 +1,9 @@
-package handlers
+package eventsdb
 
 import (
 	"database/sql"
 	"log"
 
-	"github.com/gin-gonic/gin"
 	"github.com/go-gorp/gorp"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -23,12 +22,5 @@ func initDb() *gorp.DbMap {
 func checkErr(err error, msg string) {
 	if err != nil {
 		log.Fatalln(msg, err)
-	}
-}
-
-func Cors() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		c.Writer.Header().Add("Access-Control-Allow-Origin", "*")
-		c.Next()
 	}
 }
