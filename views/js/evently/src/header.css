@@ -1,23 +1,47 @@
 .Header {
   width: 100%;
-  display: inline-block;
-  background-color: rgba(238, 97, 35);
-  color: rgba(255, 255, 255, 0.8);
-  text-indent: 150px;
-  font-size: 30px;
-  font-family: 'Inter';
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1rem 0 0 .5rem;
+  color: #00525f;
 }
 
-#createLogo {
-background-color: white;
-border-radius: 50%;
-padding: 7px;
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0 3rem;
+  list-style: none;
+  margin: 0 1rem 0 0;
+}
 
-height: 100px;
-width: 100px;
+.nav-links {
+  color: #273144;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.nav-links:hover {
+  color: #0C3EBB;
+  ;
+}
 
-top: 100px;
-left: 10px;
-position: absolute;
-overflow: hidden;
+.logo {
+  font-size: 4rem;
+  color: #00525f;
+  margin: 0 0 0 .5rem;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0%;
+  }
+  .nav {
+    padding-left: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
 }
