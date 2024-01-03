@@ -34,7 +34,7 @@ We also need to install our database - MySQL
 
 `$ FLUSH PRIVILEGES; $ exit;` 
 
-`$ mysql -u root $ ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'admin';`
+`$ mysql -u root $ ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'admin123';`
 
 
 To Start the MySQL Server: 
