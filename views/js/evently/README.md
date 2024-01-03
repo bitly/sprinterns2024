@@ -2,10 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisites 
+
+Ensure you have node installed 
+
+### node -v
+
+If node isn't found, from the project root directory
+
+### `brew istall node`
+
+
 ## Available Scripts
 
-In the project directory, you can run:
+To get the front end running, you can run:
 
+### `cd views/js/evently`
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\
