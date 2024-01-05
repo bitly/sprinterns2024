@@ -1,4 +1,5 @@
 import React from "react";
+import "@fontsource/pacifico"; //imported the font for the logo
 import {
   Routes,
   Route

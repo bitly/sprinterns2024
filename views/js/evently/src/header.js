@@ -8,7 +8,9 @@ import {
 function Header() {
   return (
     <div className="Header">
-      <h1 className="logo">Event.ly</h1>
+      <Link to="/" className="EventlyLogoLink">
+      <h1 className="logo">event.ly</h1>
+      </Link>
       <nav>
         <ul className="nav">
           <li>
