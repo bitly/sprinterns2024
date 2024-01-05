@@ -51,3 +51,34 @@ func GetEvent(eventID string) (*models.Event, error) {
 	}
 	return &events[0], nil
 }
+
+// Creating the RSVP Function 
+func CreateRSVP(rsvp models.RSVP) (*models.RSVP, error) {
+	_, err := dbmap.Query(
+		// when the user types in the values in the RSVP form, this will be populated.
+		"INSERT INTO rsvp (first_name, last_name, phone_number, email, rsvp_response) VALUES (?,?,?,?,?);",
+		rsvp.FirstName, rsvp.LastName, rsvp.PhoneNumber, rsvp.Email, rsvp.Response)
+
+		if err != nil {
+			return nil, err
+		}
+
+		// each row has a column that specifies what type of information needs to be inputed, determined by the DB schema.
+		rsvprow, err := dbmap.Query(
+			"SELECT rsvp_id, event_id, first_name, last_name, phone_number, email, rsvp_response FROM rsvp ORDER BY DESC LIMIT 1")
+		var rsvps []models.RSVP
+
+		// for each row inside of the rsvps array, we are appending an rsvp into it
+		for rsvprow.Next() {
+			var rsvp models.RSVP
+			err = rsvprow.Scan(&rsvp.RSVP_ID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Email)
+			if err != nil {
+				return nil, err
+			}
+			rsvps = append(rsvps, rsvp)
+		}
+		return &rsvps[0], nil
+}
+
+// create a function for getting RSVPS by eventID
+
