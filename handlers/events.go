@@ -143,3 +143,17 @@ func GetRSVPsByEventId(c *gin.Context) {
 	}
 	c.JSON(200, rsvp) //success
 }
+
+func GetPublicEvents(c *gin.Context) {
+    setCors(c)
+
+    // Fetch all public events from the database
+    publicEvents, err := eventsdb.GetAllPublicEvents()
+    if err != nil {
+        fmt.Printf("ERROR: %+v", err)
+        c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+        return
+    }
+	fmt.Printf("public events")
+    c.JSON(200, publicEvents) //success - return the list of public events
+}
