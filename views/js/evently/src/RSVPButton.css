@@ -1,24 +1,76 @@
-body {
+.rsvp-event {
+  
+  display: flex;
+  flex-direction: column;
+  /*align-items: center; */
+  height: 100vh; 
+  text-align: center; 
+  margin: 4rem 0;
+  
+}
+
+
+h2 {
+  text-align: center;
+  background-color:#f4f6fA;
+}
+.UserInfo {
     text-align: center;
+    justify-content: center;
+    margin: 4rem 0;
+    width: 35rem;
+    align-items: center;
+    margin:50px auto;
+    /*margin-right: 150px;
+    margin-left: 80px;*/
+    background-color:#f4f6fA;
+    
     /*display:flex;
     justify-content: center;
     align-items: center;
     margin:50px auto;*/
 }  
-*{
+.row, .col-25, .col-75{
     box-sizing: border-box;
+    font-size: 16pt;
+    text-align: left;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+    
 } 
+input {
+  width: 100%;
+  padding: .417rem;
+}
 
  
 
-/*Trying to make a button but nothing is happeninh aside from color change #FF6116*/
+/*Trying to make a button centered */
 .button { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.1s;
   background-color: #FF6116; /* Green */
   border: none;
   color: white;
+  border-radius: .5rem;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+
+.button:hover {
+  background-color: rgb(95, 116, 135);
+  color:aqua;
+}
+.button:active {
+  background-color: rgb(95, 116, 135);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
