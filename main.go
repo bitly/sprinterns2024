@@ -35,6 +35,9 @@ func main() {
 	api.GET("/event/:eventID", handlers.GetEvent)
 	api.OPTIONS("/event/:eventID", handlers.HandleCors)
 
+	//GET PUBLIC EVENTS
+	api.GET("/public-events", handlers.GetPublicEvents)
+
 	// Start and run the server
 	router.Run(":3000")
 }
