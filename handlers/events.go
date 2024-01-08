@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	eventsdb "main.go/internal/database"
@@ -50,8 +51,14 @@ func GetEvent(c *gin.Context) {
 	setCors(c)
 
 	eventID := c.Param("eventID")
+	intEventID, err := strconv.Atoi(eventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
 
-	event, err := eventsdb.GetEvent(eventID)
+	event, err := eventsdb.GetEvent(intEventID)
 	if err != nil {
 		fmt.Printf("ERROR: %+v", err)
 		c.IndentedJSON(http.StatusInternalServerError, err) //server error
@@ -63,4 +70,76 @@ func GetEvent(c *gin.Context) {
 		return
 	}
 	c.JSON(201, event) //success
+}
+
+// creates a new RSVP
+func CreateRSVP(c *gin.Context) {
+	setCors(c)
+	var rsvp models.RSVP
+
+	// Call BindJSON to bind the received JSON to event +add error handling later
+	if err := c.BindJSON(&rsvp); err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
+
+	// populated with an event
+	getEvent, err := eventsdb.GetEvent(rsvp.EventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+		return
+	}
+
+	getRSVPById, err := eventsdb.GetRSVPByEventId(rsvp.EventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+		return
+	}
+
+	if !(getEvent.MaxAttendees > len(getRSVPById)) {
+		fmt.Println("ERROR, MAX RSVPs.")
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
+
+
+
+
+	createdRSVP, err := eventsdb.CreateRSVP(rsvp)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+		return
+	}
+
+
+	c.JSON(201, createdRSVP) //success
+}
+
+func GetRSVPByEventId(c *gin.Context) {
+	setCors(c)
+
+	eventID := c.Param("eventID")
+	intEventID, err := strconv.Atoi(eventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
+
+	rsvp, err := eventsdb.GetRSVPByEventId(intEventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, err) //server error
+		return
+	}
+
+	if rsvp == nil {
+		c.IndentedJSON(http.StatusNotFound, nil) //rsvp not found
+		return
+	}
+	c.JSON(201, rsvp) //success
 }

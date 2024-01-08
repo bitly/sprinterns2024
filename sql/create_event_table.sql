@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 
 CREATE TABLE IF NOT EXISTS `rsvp` (
     `rsvp_id` integer PRIMARY KEY AUTO_INCREMENT,
-    `event_id` INT NOT NULL,
+    `event_id` int NOT NULL,
     `first_name` text NOT NULL,
     `last_name` text NOT NULL, 
     `phone_number` text NOT NULL, 
