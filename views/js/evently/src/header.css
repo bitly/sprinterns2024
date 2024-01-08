@@ -17,15 +17,15 @@
 }
 
 .nav-links {
-  color: #ff6116;
+  color: black;
   font-size: 1.5rem;
   text-decoration: none;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Bree Serif";
 
 }
 .nav-links:hover {
   color: #0C3EBB;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Bree Serif";
 }
 
 .logo {

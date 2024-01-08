@@ -24,10 +24,8 @@ const HomePage: React.FC = () => {
                 <Link to="/community-page" className="buttons">Browse</Link>
                 </div>
             </div>
-            <footer> All Rights Reserved - 2024 @ Bitly </footer>
+            <footer> All Rights Reserved - 2024 © Bitly </footer>
         </div>
-      
-        
     );
 }
 
