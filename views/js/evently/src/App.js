@@ -8,7 +8,7 @@ import HomePage from './HomePage.jsx';
 import CreateEvent from './CreateEvent.jsx'; 
 import CommunityPage from './CommunityPage.jsx';
 import AboutUs from './AboutUs.jsx';
-import RSVPButton from "./RSVPButton/RSVPButton.jsx";
+import RSVPButton from "../src/RSVPButton.jsx";
 
 function App() {
   return (
