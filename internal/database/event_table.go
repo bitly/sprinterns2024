@@ -51,3 +51,29 @@ func GetEvent(eventID string) (*models.Event, error) {
 	}
 	return &events[0], nil
 }
+
+func GetAllPublicEvents() ([]models.Event, error) {
+    var publicEvents []models.Event
+
+    // Query the database to fetch all public events
+    rows, err := dbmap.Query(
+        "SELECT  event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url FROM event WHERE public_private = 'public'")
+    if err != nil {
+        return nil, err
+    }
+    defer rows.Close()
+
+    for rows.Next() {
+        var event models.Event
+        err := rows.Scan(
+            &event.EventID, &event.EventTitle, &event.Date, &event.Time,
+            &event.Location, &event.HostName, &event.Description, &event.ContactInfo,
+            &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL)
+        if err != nil {
+            return nil, err
+        }
+        publicEvents = append(publicEvents, event)
+    }
+
+    return publicEvents, nil
+}
