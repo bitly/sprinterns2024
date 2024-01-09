@@ -37,10 +37,14 @@ function CreateEvent() {
     return (
       <div className="create-event"> 
           <div className = "create-form-container">
+            <div className='enter-details'>
             <h2> Enter the details of your event:</h2>
+            </div>
             <form className="create-form" onSubmit={handleSubmit}> 
-           
-              <h4>Event title</h4>
+           <div className='event-title'>
+           <h4>Event title</h4>
+           </div>
+          
               <input value={EventTitle} className = "create-input-boxes" onChange={(e) => {
                 setEventTitle(e.target.value)}}/> 
 
@@ -55,11 +59,15 @@ function CreateEvent() {
                 </div>
               </div>
 
-              <h4>Location</h4>
+                <div className='location'>
+                <h4>Location</h4>
               <input value={LocationForm} className = "create-input-boxes" onChange={(e) => setLocationForm(e.target.value)}/>
+                </div>
 
+              <div className='description'>
               <h4>Description</h4>
               <input value={DescriptionForm} className = "create-input-boxes" onChange={(e) => setDescriptionForm(e.target.value)}/>
+              </div>
 
               <div className="max-attendees-private-public-container">
                 <div className="max-attendees">
@@ -75,14 +83,21 @@ function CreateEvent() {
                 </div>
                </div> 
 
+                <div className='host-name'>
               <h4>Host name</h4>
               <input value={HostName} className = "create-input-boxes" onChange={(e) => setHostName(e.target.value)}/>
-
+                </div>
+              
+              <div className='contact-info'>
               <h4>Contact info</h4>
               <input value={ContactForm} className = "create-input-boxes" onChange={(e) => setContactForm(e.target.value)}/>
-
+              </div>
+              
+              <div className='image-url'>
               <h4>Image URL</h4>
               <input value={imageUrl} className = "create-input-boxes" onChange={(e) => setImageUrl(e.target.value)}/>
+              </div>
+              
               <br />
               <button type="submit" className="create-save-button">Publish</button>
             </form>
