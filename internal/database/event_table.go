@@ -98,7 +98,7 @@ func GetRSVPByEventId(eventID int) ([]models.RSVP, error) {
 	var rsvps []models.RSVP
 
 	// we want each row inside of the array to have the same eventID, we are getting this from the rsvp table in the DB
-	rsvprow, err := dbmap.Query("SELECT rsvp_id, event_id, first_name, last_name, phone_number, email FROM rsvp WHERE event_id=?", eventID)
+	rsvprow, err := dbmap.Query("SELECT rsvp_id, event_id, first_name, last_name, phone_number, email, rsvp_response FROM rsvp WHERE event_id=?", eventID)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +108,7 @@ func GetRSVPByEventId(eventID int) ([]models.RSVP, error) {
 		var rsvp models.RSVP 
 
 		// reading the values in the row and storing it inside of the rsvp variable 
-		err = rsvprow.Scan(&rsvp.RSVP_ID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email)
+		err = rsvprow.Scan(&rsvp.RSVP_ID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Response)
 			if err != nil {
 				return nil, err
 			}
