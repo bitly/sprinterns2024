@@ -52,8 +52,9 @@ export default function RSVPForm () {
             <div className='response-container'>
             <label> RSVP: </label>
             <select className = "rsvp-input-boxes" value={RSVPResponse} onChange={(e) => setRSVPResponse(e.target.value)}>
-                    <option name="public" value="public" > Yes </option>
-                    <option name="private" value="private" > No </option>
+                    <option name="yes" value="yes" > Yes </option>
+                    <option name="no" value="no" > No </option>
+                    <option name="maybe" value="maybe" > Maybe </option>
                   </select>
             </div>
             </div>
