@@ -69,7 +69,7 @@ func GetEvent(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, nil) //event not found
 		return
 	}
-	c.JSON(201, event) //success
+	c.JSON(200, event) //success
 }
 
 // creates a new RSVP
@@ -92,7 +92,7 @@ func CreateRSVP(c *gin.Context) {
 		return
 	}
 
-	getRSVPById, err := eventsdb.GetRSVPByEventId(rsvp.EventID)
+	getRSVPById, err := eventsdb.GetRSVPsByEventId(rsvp.EventID)
 	if err != nil {
 		fmt.Printf("ERROR: %+v", err)
 		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
@@ -119,7 +119,7 @@ func CreateRSVP(c *gin.Context) {
 	c.JSON(201, createdRSVP) //success
 }
 
-func GetRSVPByEventId(c *gin.Context) {
+func GetRSVPsByEventId(c *gin.Context) {
 	setCors(c)
 
 	eventID := c.Param("eventID")
@@ -130,7 +130,7 @@ func GetRSVPByEventId(c *gin.Context) {
 		return
 	}
 
-	rsvp, err := eventsdb.GetRSVPByEventId(intEventID)
+	rsvp, err := eventsdb.GetRSVPsByEventId(intEventID)
 	if err != nil {
 		fmt.Printf("ERROR: %+v", err)
 		c.IndentedJSON(http.StatusInternalServerError, err) //server error
@@ -141,5 +141,5 @@ func GetRSVPByEventId(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, nil) //rsvp not found
 		return
 	}
-	c.JSON(201, rsvp) //success
+	c.JSON(200, rsvp) //success
 }

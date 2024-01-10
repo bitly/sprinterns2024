@@ -17,7 +17,7 @@ type Event struct {
 
 // Defining the RSVP Struct
 type RSVP struct {
-	RSVP_ID 	int `json:"rsvp_id,omitempty"`
+	RSVPID 		int `json:"rsvp_id,omitempty"`
 	EventID 	int `json:"event_id"`
 	FirstName 	string `json:"first_name"`
 	LastName 	string `json:"last_name"`

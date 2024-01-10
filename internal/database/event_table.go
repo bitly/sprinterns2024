@@ -74,7 +74,7 @@ func CreateRSVP(rsvp models.RSVP) (*models.RSVP, error) {
 		// iterating through each rsvprow and reading the data that is stored in the address, this is then stored inside of the rsvp variable
 		for rsvprow.Next() {
 			var rsvp models.RSVP
-			err = rsvprow.Scan(&rsvp.RSVP_ID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Response)
+			err = rsvprow.Scan(&rsvp.RSVPID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Response)
 			if err != nil {
 				return nil, err
 			}
@@ -93,7 +93,7 @@ func CreateRSVP(rsvp models.RSVP) (*models.RSVP, error) {
 // create a function for getting RSVPS by eventID
 // we are passing in eventID in as a paramter 
 // we want an array of the RSVP model to be returned, as well as an error if we encounter one
-func GetRSVPByEventId(eventID int) ([]models.RSVP, error) {
+func GetRSVPsByEventId(eventID int) ([]models.RSVP, error) {
 	// an RSVPSs array 
 	var rsvps []models.RSVP
 
@@ -108,7 +108,7 @@ func GetRSVPByEventId(eventID int) ([]models.RSVP, error) {
 		var rsvp models.RSVP 
 
 		// reading the values in the row and storing it inside of the rsvp variable 
-		err = rsvprow.Scan(&rsvp.RSVP_ID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Response)
+		err = rsvprow.Scan(&rsvp.RSVPID, &rsvp.EventID, &rsvp.FirstName, &rsvp.LastName, &rsvp.PhoneNumber, &rsvp.Email, &rsvp.Response)
 			if err != nil {
 				return nil, err
 			}
