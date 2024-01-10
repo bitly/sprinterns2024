@@ -9,11 +9,9 @@ export default function RSVPForm () {
     const [email, setEmail] = useState("")
     const [RSVPResponse, setRSVPResponse] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
-    // const [errorMessage, setErrorMessage] = useState("")
 
     const handleRSVPSubmit = async (e) => {
         e.preventDefault()
-        // if (eventId && firstName && lastName && phoneNumber && RSVPResponse)   
         try {
           let res = await fetch("http://localhost:3000/api/rsvps", {
             method: "POST",
@@ -30,75 +28,68 @@ export default function RSVPForm () {
         catch (err){
           console.log(err);
         }
-        // else {
-        //     console.log("Please submit the field")
-        //     setErrorMessage("Please Submit All Fields!")
-        // }
       }
 
     return (
-        <>
-        <div className="create-rsvp">
-            <div className='rsvp-form-container'>
-            <form className='rsvp-form' onSubmit={handleRSVPSubmit}>
-            <h2 className='rsvp-title'> Register for "Event Name" </h2>
+      <>
+      <div className="create-rsvp">
+          <div className='rsvp-form-container'>
+              <form className='rsvp-form' onSubmit={handleRSVPSubmit}>
+                  <h2 className='rsvp-title'> 
+                  Register for "Event Name" 
+                  </h2>
 
-            <div className="eventid-rsvp-container">
-                <div className='eventId'>
-            <label> Event ID: </label>
-            <input type="number" className = "rsvp-input-boxes" value={eventId} onChange={(e) => setEventId(e.target.value)} />
-            </div>
+                  <div className="eventid-rsvp-container">
+                      <div className='eventId'>
+                          <label> Event ID: </label>
+                          <input type="number" className = "rsvp-input-boxes" value={eventId} onChange={(e) => setEventId(e.target.value)} />
+                      </div>
 
-            <div className='response-container'>
-            <label> RSVP: </label>
-            <select className = "rsvp-input-boxes" value={RSVPResponse} onChange={(e) => setRSVPResponse(e.target.value)}>
-                    <option name="yes" value="yes" > Yes </option>
-                    <option name="no" value="no" > No </option>
-                    <option name="maybe" value="maybe" > Maybe </option>
-                  </select>
-            </div>
-            </div>
+                      <div className='response-container'>
+                          <label> RSVP: </label>
+                          <select className = "rsvp-input-boxes" value={RSVPResponse} onChange={(e) => setRSVPResponse(e.target.value)}>
+                              <option name="yes" value="yes" > Yes </option>
+                              <option name="no" value="no" > No </option>
+                              <option name="maybe" value="maybe" > Maybe </option>
+                          </select>
+                      </div>
+                  </div>
 
-            <div className='first-last-name-container'>
-                <div className='first-name'>
-                <label> First Name: </label>
-                <input type="text" className = "rsvp-input-boxes" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </div>
+                  <div className='first-last-name-container'>
+                      <div className='first-name'>
+                          <label> First Name: </label>
+                          <input type="text" className = "rsvp-input-boxes" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                      </div>
 
-                <div className='last-name'>
-                <label> Last Name: </label>
-                <input type="text" className = "rsvp-input-boxes" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </div>
-            </div>
+                      <div className='last-name'>
+                          <label> Last Name: </label>
+                          <input type="text" className = "rsvp-input-boxes" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                      </div>
+                  </div>
 
-            <div className="phone-email-container">
-                <div className='phone'>
-                <label> Phone #: </label>
-                <input type="text" className = "rsvp-input-boxes" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-                </div>
+                  <div className="phone-email-container">
+                      <div className='phone'>
+                          <label> Phone #: </label>
+                          <input type="text" className = "rsvp-input-boxes" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                      </div>
 
-                <div className='email'>
-                <label> Email: </label>
-                <input type="text" className = "rsvp-input-boxes" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-            </div>
+                      <div className='email'>
+                          <label> Email: </label>
+                          <input type="text" className = "rsvp-input-boxes" value={email} onChange={(e) => setEmail(e.target.value)} />
+                      </div>
+                  </div>
 
-        
-            <button type='submit' className='rsvp-submit-btn'> Register </button>
 
-            </form>
-         
+                  <button type='submit' className='rsvp-submit-btn'> Register</button>
 
-            {successMessage && (
-            <div role="alert" className="alert">
-              <div>{successMessage}</div>
-            </div>)}
-            {/* {errorMessage && (
-            <div role="alert" className="error-alert">
-              <div>{errorMessage}</div>
-            </div>)} */}
-         </div>
-         </div>
-        </>
+              </form>
+
+              {successMessage && (
+              <div role="alert" className="alert">
+                  <div>{successMessage}</div>
+              </div>)}
+          </div>
+      </div>
+</>
     )
 }
