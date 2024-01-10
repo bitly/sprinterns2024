@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  padding: 1rem 0 0 .5rem;
+  padding: 0.1rem 0 0 .5rem;
   color: #00525f;
 }
 
@@ -17,19 +17,26 @@
 }
 
 .nav-links {
-  color: #273144;
+  color: black;
   font-size: 1.5rem;
   text-decoration: none;
+  font-family: "Bree Serif";
+
 }
 .nav-links:hover {
   color: #0C3EBB;
-  ;
+  font-family: "Bree Serif";
 }
 
 .logo {
   font-size: 4rem;
-  color: #00525f;
+  font-family: "Pacifico";  
+  color: #ff6116;
   margin: 0 0 0 .5rem;
+}
+
+.EventlyLogoLink {
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
