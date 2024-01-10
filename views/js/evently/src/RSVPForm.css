@@ -26,7 +26,6 @@
     padding: 2rem;
     width: 35rem;
     border-radius: 1rem;
-    /* filter: drop-shadow(16px 16px grey); */
     box-shadow: 2px 8px 4px #D8D8D8; 
 
 
@@ -68,7 +67,6 @@
     padding-bottom: 2%;
     padding-left: 2%;
     padding-right: 2%;
-    /* margin-top: 5%; */
     margin: 0 auto;
     margin-top: 7%;
     width: 20%;
