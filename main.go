@@ -40,7 +40,7 @@ func main() {
 	api.OPTIONS("/rsvps", handlers.HandleCors)
 
 	// GET the RSVP
-	api.GET("/rsvp/:eventID", handlers.GetRSVPByEventId)
+	api.GET("/rsvp/:eventID", handlers.GetRSVPsByEventId)
 	api.OPTIONS("/rsvp/:eventID", handlers.HandleCors)
 
 
