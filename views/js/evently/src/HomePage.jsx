@@ -14,14 +14,14 @@ const HomePage: React.FC = () => {
                 <p className="Home-P"> Where Socializing Meets Simplicity!</p>
                
                <div className="HostEvent">
-                <h2 className = "Text">Host your events here!</h2>
-                <Link to="/create-event" className="buttons">Get Started</Link>
-                <b />
+                    <h2 className = "Text">Host your events here!</h2>
+                    <Link to="/create-event" className="buttons">Get Started</Link>
+                    <b />
                 </div>
 
                 <div className="FindEvent">
-                <h2 className = "Text">Find an event!</h2>
-                <Link to="/community-page" className="buttons">Browse</Link>
+                    <h2 className = "Text">Find an event!</h2>
+                    <Link to="/community-page" className="buttons">Browse</Link>
                 </div>
             </div>
             <footer> All Rights Reserved - 2024 © Bitly </footer>

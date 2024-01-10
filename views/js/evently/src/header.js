@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="Header">
       <Link to="/" className="EventlyLogoLink">
-      <h1 className="logo">event.ly</h1>
+        <h1 className="logo">event.ly</h1>
       </Link>
       <nav>
         <ul className="nav">
