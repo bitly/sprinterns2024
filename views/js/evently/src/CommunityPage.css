@@ -86,6 +86,7 @@
         flex-direction: column;
     }
     .column {
+        width: auto;
       flex: 1;
     }
     .date-time-container {
