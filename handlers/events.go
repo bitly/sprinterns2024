@@ -154,6 +154,5 @@ func GetPublicEvents(c *gin.Context) {
         c.IndentedJSON(http.StatusInternalServerError, nil) //server error
         return
     }
-	fmt.Printf("public events")
     c.JSON(200, publicEvents) //success - return the list of public events
 }
