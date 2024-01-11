@@ -37,12 +37,12 @@ function CreateEvent() {
     return (
       <div className="create-event"> 
           <div className = "create-form-container">
-            <div className='enter-details'>
+             <div className='enter-details'>
             <h2> Enter the details of your event:</h2>
             </div>
             <form className="create-form" onSubmit={handleSubmit}> 
-           <div className='event-title'>
-           <h4>Event title</h4>
+            <div className='event-title'>
+             <h4>Event title</h4>
            </div>
           
               <input value={EventTitle} className = "create-input-boxes" onChange={(e) => {
@@ -59,8 +59,8 @@ function CreateEvent() {
                 </div>
               </div>
 
-                <div className='location'>
-                <h4>Location</h4>
+               <div className='location'>
+                  <h4>Location</h4>
               <input value={LocationForm} className = "create-input-boxes" onChange={(e) => setLocationForm(e.target.value)}/>
                 </div>
 
