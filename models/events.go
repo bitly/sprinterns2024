@@ -14,3 +14,14 @@ type Event struct {
 	MaxAttendees  int    `json:"max_attendees" `
 	ImageURL      string `json:"image_url"`
 }
+
+// Defining the RSVP Struct
+type RSVP struct {
+	RSVPID 		int `json:"rsvp_id,omitempty"`
+	EventID 	int `json:"event_id"`
+	FirstName 	string `json:"first_name"`
+	LastName 	string `json:"last_name"`
+	PhoneNumber string `json:"phone_number"`
+	Email 		string `json:"email"`
+	Response 	string `json:"rsvp_response"`
+}

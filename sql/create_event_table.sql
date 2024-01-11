@@ -14,3 +14,4 @@ CREATE TABLE IF NOT EXISTS `event` (
     `max_attendees` int NOT NULL,
 	`created_at` timestamp NOT NULL default CURRENT_TIMESTAMP
 ) DEFAULT CHARSET=utf8;
+

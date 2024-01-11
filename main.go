@@ -35,6 +35,15 @@ func main() {
 	api.GET("/event/:eventID", handlers.GetEvent)
 	api.OPTIONS("/event/:eventID", handlers.HandleCors)
 
+	//CREATE an RSVP 
+	api.POST("/rsvps", handlers.CreateRSVP)
+	api.OPTIONS("/rsvps", handlers.HandleCors)
+
+	// GET the RSVP
+	api.GET("/rsvp/:eventID", handlers.GetRSVPsByEventId)
+	api.OPTIONS("/rsvp/:eventID", handlers.HandleCors)
+
+
 	// Start and run the server
 	router.Run(":3000")
 }
