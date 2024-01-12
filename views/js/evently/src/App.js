@@ -12,6 +12,7 @@ import CommunityPage from './CommunityPage.jsx';
 import AboutUs from './AboutUs.jsx';
 import RSVPForm from "./RSVPForm.jsx";
 import RSVPButton from "./RSVPButton.jsx";
+import RSVPList from "./RSVPList.jsx";
 
 function App() {
   return (
