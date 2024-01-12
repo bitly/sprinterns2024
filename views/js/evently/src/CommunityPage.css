@@ -9,6 +9,7 @@
 }
 .search-bar{
     text-align: left;
+    margin-left: 4rem;    
 }
 .search-bar input[type=text]{
     padding: 1rem;
@@ -19,6 +20,7 @@
 .link-container{
     text-align: left;
     padding-top: 1rem;
+    margin-left: 4rem;    
 }
 .btn{
     border: none;
