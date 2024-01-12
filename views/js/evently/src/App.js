@@ -11,6 +11,7 @@ import CreateEvent from './CreateEvent.jsx';
 import CommunityPage from './CommunityPage.jsx';
 import AboutUs from './AboutUs.jsx';
 import RSVPForm from "./RSVPForm.jsx";
+import RSVPButton from "./RSVPButton.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/community-page" element={<CommunityPage />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/RSVP" element={<RSVPButton />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/rsvp-form" element={<RSVPForm/>} />
       </Routes>
