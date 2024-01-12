@@ -87,7 +87,7 @@
     }
     .column {
         width: auto;
-      flex: 1;
+        flex: 1;
     }
     .date-time-container {
         font-size: 1.5rem;
