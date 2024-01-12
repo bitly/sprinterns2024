@@ -17,10 +17,8 @@ export default function RSVPList () {
         .then((response) => {
             setRSVPs(response.data);
             setLoading(false); // after we have received our data and everything is loaded, we are setting it to false, we now know the page is no longer fetching data from the backend
-            console.log(response.data)
         })
         .catch((error) => {
-            console.log(error);
             setLoading(false);
         });
     }, []); // this is the dependency array, an array of values the effect depends on, if the values inside of our array change, react will re-render the effect
