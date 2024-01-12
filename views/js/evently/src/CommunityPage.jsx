@@ -34,7 +34,6 @@ function CommunityPage() {
               <input type="text" placeholder="Search..." />
             </div>
             <div className="link-container">
-              {/*add a filter to filter event tags */}
               <button className="btn"> All Events </button>
               <button className="btn"> Birthday </button>
               <button className="btn"> Wedding </button>
@@ -44,12 +43,7 @@ function CommunityPage() {
 
             <div className="filter-btn">
             </div>
-
-              {/* row 1  */}
             <div className="row"> 
-
-              {/* column 1  */}
-
               <div className="column"> 
                 <div className="event-img">
                   <img 
@@ -58,12 +52,11 @@ function CommunityPage() {
                   style={{
                     width: "700px",
                     height: "450px",
-                   
                   }}
                   />
                     <div className="event-info"> 
                       <h4> {eventData.event_title}</h4>
-                      <div className="date-time-container">
+                      <div className="date-and-time-container">
                         <h4> Date: {eventData.date}</h4>
                         <h4> Time: {eventData.time}</h4>
                       </div>
@@ -71,7 +64,6 @@ function CommunityPage() {
                 </div>
               </div>
 
-                  {/* column 2  */}
               <div className="column"> 
                 <div className="event-img">
                   <img 
@@ -84,14 +76,14 @@ function CommunityPage() {
                   />
                     <div className="event-info"> 
                       <h4> {eventData.event_title}</h4>
-                      <div className="date-time-container">
+                      <div className="date-and-time-container">
                         <h4> Date: {eventData.date}</h4>
                         <h4> Time: {eventData.time}</h4>
                       </div>
                     </div>
                  </div>
               </div>
-                {/* column 3  */}
+
                 <div className="column"> 
                   <div className="event-img">
                     <img 
@@ -104,7 +96,68 @@ function CommunityPage() {
                     />
                       <div className="event-info"> 
                         <h4> {eventData.event_title}</h4>
-                        <div className="date-time-container">
+                        <div className="date-and-time-container">
+                          <h4> Date: {eventData.date}</h4>
+                          <h4> Time: {eventData.time}</h4>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div className="row"> 
+              <div className="column"> 
+                <div className="event-img">
+                  <img 
+                  src={eventData.image_url}
+                  alt="User inputted description."
+                  style={{
+                    width: "700px",
+                    height: "450px",
+                  }}
+                  />
+                    <div className="event-info"> 
+                      <h4> {eventData.event_title}</h4>
+                      <div className="date-and-time-container">
+                        <h4> Date: {eventData.date}</h4>
+                        <h4> Time: {eventData.time}</h4>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div className="column"> 
+                <div className="event-img">
+                  <img 
+                  src={eventData.image_url}
+                  alt="User inputted description."
+                  style={{
+                    width: "700px",
+                    height: "450px",
+                  }}
+                  />
+                    <div className="event-info"> 
+                      <h4> {eventData.event_title}</h4>
+                      <div className="date-and-time-container">
+                        <h4> Date: {eventData.date}</h4>
+                        <h4> Time: {eventData.time}</h4>
+                      </div>
+                    </div>
+                 </div>
+              </div>
+
+                <div className="column"> 
+                  <div className="event-img">
+                    <img 
+                    src={eventData.image_url}
+                    alt="User inputted description."
+                    style={{
+                      width: "700px",
+                      height: "450px",
+                    }}
+                    />
+                      <div className="event-info"> 
+                        <h4> {eventData.event_title}</h4>
+                        <div className="date-and-time-container">
                           <h4> Date: {eventData.date}</h4>
                           <h4> Time: {eventData.time}</h4>
                         </div>
@@ -113,6 +166,7 @@ function CommunityPage() {
                 </div>
             </div>
           </div>
+          
     )
 };
 
