@@ -14,7 +14,7 @@ func CreateEvent(event models.Event) (*models.Event, error) {
 	}
 
 	eventrow, err := dbmap.Query(
-		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url FROM event ORDER BY event_id DESC LIMIT 1, event_type, host_id")
+		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id FROM event ORDER BY event_id DESC LIMIT 1")
 	var events []models.Event
 
 	for eventrow.Next() {
@@ -147,35 +147,3 @@ func GetAllPublicEvents() ([]models.Event, error) {
     return publicEvents, nil
 }
 
-func CreateHost(host models.Host) (*models.Host, error) {
-	_, err := dbmap.Query(
-		// when the user types in the values in the RSVP form, this will be populated.
-		"INSERT INTO host (first_name, last_name, email, image_url) VALUES (?,?,?,?);",
-		host.FirstName, host.LastName, host.Email, host.ImageURL)
-
-		if err != nil {
-			return nil, err
-		}
-
-		// each row has a column that specifies what type of information needs to be inputed, determined by the DB schema.
-		hostrow, err := dbmap.Query(
-			"SELECT host_id, first_name, last_name, email, image_url FROM host ORDER BY host_id DESC LIMIT 1")
-		var hosts []models.Host
-
-		// for each row inside of the host array, we are appending another host into it
-		// iterating through each hostrow and reading the data that is stored in the address, this is then stored inside of the host variable
-		for hostrow.Next() {
-			var host models.Host
-			err = hostrow.Scan(&host.HostID, &host.FirstName, &host.LastName, &host.Email, &host.ImageURL)
-			if err != nil {
-				return nil, err
-			}
-
-			// appending the host into the hosts array
-			hosts = append(hosts, host)
-		}
-
-
-
-		return &hosts[0], nil
-}
