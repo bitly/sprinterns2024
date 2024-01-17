@@ -47,6 +47,10 @@ func main() {
 	api.GET("/public-events", handlers.GetPublicEvents)
 	api.OPTIONS("/public-events", handlers.HandleCors)
 
+	//Create Host
+	api.POST("/hosts", handlers.CreateHost)
+	api.OPTIONS("/hosts", handlers.HandleCors)
+
 	// Start and run the server
 	router.Run(":3000")
 }

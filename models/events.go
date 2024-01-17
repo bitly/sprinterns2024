@@ -13,6 +13,8 @@ type Event struct {
 	PublicPrivate string `json:"public_private" `
 	MaxAttendees  int    `json:"max_attendees" `
 	ImageURL      string `json:"image_url"`
+	EventType     string `json:"event_type"`
+	HostID        int    `json:"host_id"`
 }
 
 // Defining the RSVP Struct
@@ -24,4 +26,13 @@ type RSVP struct {
 	PhoneNumber string `json:"phone_number"`
 	Email 		string `json:"email"`
 	Response 	string `json:"rsvp_response"`
+}
+
+//host struct
+type Host struct {
+	HostID 		int `json:"host_id,omitempty"`
+	FirstName 	string `json:"first_name"`
+	LastName 	string `json:"last_name"`
+	Email 		string `json:"email"`
+	ImageURL    string `json:"image_url"`
 }

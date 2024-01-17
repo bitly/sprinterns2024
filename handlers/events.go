@@ -156,3 +156,25 @@ func GetPublicEvents(c *gin.Context) {
     }
     c.JSON(200, publicEvents) //success - return the list of public events
 }
+
+// creates a new event
+func CreateHost(c *gin.Context) {
+	setCors(c)
+	var host models.Host
+
+	// Call BindJSON to bind the received JSON to event +add error handling later
+	if err := c.BindJSON(&host); err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
+
+	createdHost, err := eventsdb.CreateHost(host)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+		return
+	}
+
+	c.JSON(201, createdHost) //success
+}

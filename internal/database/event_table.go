@@ -6,21 +6,21 @@ import (
 
 func CreateEvent(event models.Event) (*models.Event, error) {
 	_, err := dbmap.Query(
-		"INSERT INTO event (title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-		event.EventTitle, event.Date, event.Time, event.Location, event.HostName, event.Description, event.ContactInfo, event.PublicPrivate, event.NumRSVP, event.MaxAttendees, event.ImageURL)
+		"INSERT INTO event (title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+		event.EventTitle, event.Date, event.Time, event.Location, event.HostName, event.Description, event.ContactInfo, event.PublicPrivate, event.NumRSVP, event.MaxAttendees, event.ImageURL, event.EventType, event.HostID)
 
 	if err != nil {
 		return nil, err
 	}
 
 	eventrow, err := dbmap.Query(
-		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url FROM event ORDER BY event_id DESC LIMIT 1")
+		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id FROM event ORDER BY event_id DESC LIMIT 1")
 	var events []models.Event
 
 	for eventrow.Next() {
 		var event models.Event
 		// for each row, scan into the event struct
-		err = eventrow.Scan(&event.EventID, &event.EventTitle, &event.Date, &event.Time, &event.Location, &event.HostName, &event.Description, &event.ContactInfo, &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL)
+		err = eventrow.Scan(&event.EventID, &event.EventTitle, &event.Date, &event.Time, &event.Location, &event.HostName, &event.Description, &event.ContactInfo, &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL, &event.EventType, &event.HostID)
 		if err != nil {
 			return nil, err
 		}
@@ -33,13 +33,13 @@ func CreateEvent(event models.Event) (*models.Event, error) {
 func GetEvent(eventID int) (*models.Event, error) {
 	var events []models.Event
 	eventrow, err := dbmap.Query(
-		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url FROM event WHERE event_id=?;",
+		"SELECT event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id FROM event WHERE event_id=?;",
 		eventID)
 
 	for eventrow.Next() {
 		var event models.Event
 		// for each row, scan into the event struct
-		err = eventrow.Scan(&event.EventID, &event.EventTitle, &event.Date, &event.Time, &event.Location, &event.HostName, &event.Description, &event.ContactInfo, &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL)
+		err = eventrow.Scan(&event.EventID, &event.EventTitle, &event.Date, &event.Time, &event.Location, &event.HostName, &event.Description, &event.ContactInfo, &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL, &event.EventType, &event.HostID)
 		if err != nil {
 			return nil, err
 		}
@@ -126,7 +126,7 @@ func GetAllPublicEvents() ([]models.Event, error) {
 
     // Query the database to fetch all public events
     rows, err := dbmap.Query(
-        "SELECT  event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url FROM event WHERE public_private = 'public'")
+        "SELECT  event_id, title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id FROM event WHERE public_private = 'public'")
     if err != nil {
         return nil, err
     }
@@ -137,7 +137,7 @@ func GetAllPublicEvents() ([]models.Event, error) {
         err := rows.Scan(
             &event.EventID, &event.EventTitle, &event.Date, &event.Time,
             &event.Location, &event.HostName, &event.Description, &event.ContactInfo,
-            &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL)
+            &event.PublicPrivate, &event.NumRSVP, &event.MaxAttendees, &event.ImageURL, &event.EventType, &event.HostID)
         if err != nil {
             return nil, err
         }
@@ -146,3 +146,4 @@ func GetAllPublicEvents() ([]models.Event, error) {
 
     return publicEvents, nil
 }
+
