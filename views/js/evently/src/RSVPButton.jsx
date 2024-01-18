@@ -1,74 +1,110 @@
-import React, {useState, useEffect} from 'react';
-import './RSVPButton.css';
-    
+import React, { useState, useEffect } from "react";
+import "./RSVPButton.css";
+import { useParams } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import DefaultImage from "./Images/default.png";
+
 function RSVPButton() {
-  const [eventData, setEventDetails]= useState([]);
-   const getEvent = async (e) => {
-    
-   
-    try {
-      let res = await fetch("http://localhost:3000/api/event/5",  {
-        method: "GET",
-        mode: "cors",
-      });
-      if (res.status === 201) {
-        let data = await res.json()
-        setEventDetails(data)
-        
-       }
-     }
-     catch (err){
-       console.log(err);
-     }
-   }
-   useEffect(()=>{
-    getEvent()
-   }, [])
-   console.log(eventData)
+  const { eventId } = useParams();
+  const [eventData, setEventDetails] = useState([]);
+  const [error, setError] = useState("");
+  const [eventTitle, setEventTitle] = useState(""); 
+  const navigateTo = useNavigate();
 
-    return (
-     <div className="rsvp-event">
-            <div className="user-info">
-                <h1 className="event-title">{eventData.event_title}</h1> 
-                <div className="image-container">
-                    <img
-                        src={eventData.image_url}
-                        alt="User inputted description"  
-                        style={{
-                          width: "100%",
-                          height: "100%", 
-                        }}
-                    />
-                </div>
+  const eventDateTime = new Date(eventData.date + " " + eventData.time);
+  const formatDate = eventDateTime.toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "2-digit",
+  });
+  const formatTime = eventDateTime.toLocaleString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-                <div className="event-details">
-                    <div className="location-description">
-                      <p> 📍 {eventData.location}</p>
-                      <p> {eventData.description}</p>
-                    </div>
+  useEffect(() => {
+    const fetchEventDetails = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/event/${eventId}`
+        );
+        const eventData = await response.json();
+        setEventDetails(eventData);
+        setEventTitle(eventData.event_title);
+      } catch (error) {
+        setError(
+          "The server ran into an error getting the events, please try again!"
+        );
+      }
+    };
+    fetchEventDetails();
+  }, [eventId]);
 
-                    <div className="contact-container">
-                    <p> Host Name: {eventData.host_name}</p>
-                    <p>Contact: {eventData.contact_info}</p>
-                    </div>
-              
-                    <div className="date-time-container">
-                        <p> Date: {eventData.date}</p>
-                        <p> Time: {eventData.time}</p>
-                    </div>
-                  
+  const handleRSVP = (e) => {
+    e.preventDefault();
+    navigateTo(`/rsvp-form/${eventTitle}`, { state: { eventTitle} });
 
-                    <div className="max-rsvp-container">
-                      <p> Max Attendees: {eventData.max_attendees}</p>
-                      <p> RSVPs: {eventData.num_of_RSVP}</p>
-                    </div>
-              
-                </div >
-                <button className="rsvp-button" onClick={getEvent}>
-                  RSVP!
-                </button>
-            </div> 
-        </div>
- )
-};
+  };
+
+  return (
+    <div className="rsvp-event">
+      <div className="user-info">
+        {error ? (
+          <div className="error-display">
+            <p> Error! Something went wrong displaying the event. </p>
+            <p>Please try again!</p>
+            <Link to="/community-page">
+              <p>Back</p>
+            </Link>
+          </div>
+        ) : (
+          <>
+            <Link to="/community-page">
+              <span className="exit"> X </span>
+            </Link>
+            <div className="image-container">
+              <img
+                src={
+                  eventData.image_url !== ""
+                    ? eventData.image_url
+                    : DefaultImage
+                }
+                alt="User inputted description"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </div>
+
+            <div className="event-details">
+              <div className="location-description">
+                <p> 📍 {eventData.location}</p>
+                <p> {eventData.description}</p>
+              </div>
+
+              <div className="contact-container">
+                <p> Event ID: {eventData.event_id}</p>
+                <p> Host Name: {eventData.host_name}</p>
+                <p>Contact: {eventData.contact_info}</p>
+              </div>
+
+              <div className="date-time-container">
+                <p> Date: {formatDate}</p>
+                <p> Time: {formatTime}</p>
+              </div>
+
+              <div className="max-rsvp-container">
+                <p> Max Attendees: {eventData.max_attendees}</p>
+                <p> RSVPs: {eventData.num_of_RSVP}</p>
+              </div>
+            </div>
+
+            <button className="rsvp-button" onClick={handleRSVP}> RSVP! </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 export default RSVPButton;

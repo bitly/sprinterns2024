@@ -21,9 +21,9 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/community-page" element={<CommunityPage />} />
         <Route path="/create-event" element={<CreateEvent />} />
-        <Route path="/RSVP" element={<RSVPButton />} />
+        <Route path="/RSVP/:eventId" element={<RSVPButton />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/rsvp-form" element={<RSVPForm/>} />
+        <Route path="/rsvp-form/:eventTitle" element={<RSVPForm/>} />
       </Routes>
     </div>
   );

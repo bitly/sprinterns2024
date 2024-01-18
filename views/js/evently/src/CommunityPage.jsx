@@ -1,173 +1,101 @@
-import React, {useState, useEffect} from 'react'
-import './CommunityPage.css'
+import React, { useState, useEffect } from "react";
+import "./CommunityPage.css";
+import axios from "axios";
+import RSVPButton from "./RSVPButton";
+import { useNavigate, Link } from "react-router-dom";
 
 function CommunityPage() {
-    const [eventData, setEventDetails]= useState([]);
-    const getEvent = async (e) => {
-    
-    try {
-      let res = await fetch("http://localhost:3000/api/event/6",  {
-        method: "GET",
-        mode: "cors",
+  const [eventData, setEventDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [selectEvent, setSelectEvent] = useState(null);
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`http://localhost:3000/api/public-events`)
+      .then((response) => {
+        setEventDetails(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(
+          "The server ran into an error getting the events, please try again!"
+        );
+        setError(error);
+        setIsLoading(false);
       });
-      if (res.status === 201) {
-        let data = await res.json()
-        setEventDetails(data)
-        
-       }
-     }
-     catch (err){
-       console.log(err);
-     }
-   }
-   useEffect(()=>{
-    getEvent()
-   }, [])
-   console.log(eventData)
-   
+  }, []);
 
- 
-    return (
-        <div className="event-nav-container">
-            <h2> Browse Events</h2>
-            <div className="search-bar">
-              <input type="text" placeholder="Search..." />
-            </div>
-            <div className="link-container">
-              <button className="btn"> All Events </button>
-              <button className="btn"> Birthday </button>
-              <button className="btn"> Wedding </button>
-              <button className="btn"> Graduation </button>
-              <button className="btn"> Anniversary </button>
-            </div>
+  const handleEventClick = (event) => {
+    try {
+      setSelectEvent(event);
+      navigateTo(`/RSVP/${event.event_id}`);
+    } catch {
+      setError("Something went wrong connecting");
+    }
+  };
 
-            <div className="filter-btn">
-            </div>
-            <div className="row"> 
-              <div className="column"> 
+  return (
+    <>
+      <div className="event-nav-container">
+        <h2 className="browse-title"> Browse Events</h2>
+        <div className="search-bar">
+          <input type="text" placeholder="Start Your Search Here!" />
+          <button className="search-btn"> 🔍 </button>
+        </div>
+
+        <div className="link-container">
+          <button className="btn"> All Events </button>
+          <button className="btn"> Birthday </button>
+          <button className="btn"> Wedding </button>
+          <button className="btn"> Graduation </button>
+          <button className="btn"> Anniversary </button>
+        </div>
+
+        <div className="filter-btn"></div>
+      </div>
+
+      {error ? (
+        <div className="error-display">
+          <p> Error! Something went wrong loading events. </p>
+          <p>Please try again!</p>
+          <Link to="/">
+            <p>Home</p>
+          </Link>
+        </div>
+      ) : (
+        <div className="public-events-container">
+          <div className="events-row">
+            {eventData.map((event) => (
+              <div
+                key={event.event_id}
+                className="event-card"
+                onClick={() => handleEventClick(event)}
+              >
+                <p className="event-card-title"> {event.event_title}</p>
                 <div className="event-img">
-                  <img 
-                  src={eventData.image_url}
-                  alt="User inputted description."
-                  style={{
-                    width: "700px",
-                    height: "450px",
-                  }}
-                  />
-                    <div className="event-info"> 
-                      <h4> {eventData.event_title}</h4>
-                      <div className="date-and-time-container">
-                        <h4> Date: {eventData.date}</h4>
-                        <h4> Time: {eventData.time}</h4>
-                      </div>
-                    </div>
-                </div>
-              </div>
-
-              <div className="column"> 
-                <div className="event-img">
-                  <img 
-                  src={eventData.image_url}
-                  alt="User inputted description."
-                  style={{
-                    width: "700px",
-                    height: "450px",
-                  }}
-                  />
-                    <div className="event-info"> 
-                      <h4> {eventData.event_title}</h4>
-                      <div className="date-and-time-container">
-                        <h4> Date: {eventData.date}</h4>
-                        <h4> Time: {eventData.time}</h4>
-                      </div>
-                    </div>
-                 </div>
-              </div>
-
-                <div className="column"> 
-                  <div className="event-img">
-                    <img 
-                    src={eventData.image_url}
+                  <img
+                    src={
+                      event.image_url !== "" ? event.image_url : "default.png"
+                    }
                     alt="User inputted description."
-                    style={{
-                      width: "700px",
-                      height: "450px",
-                    }}
-                    />
-                      <div className="event-info"> 
-                        <h4> {eventData.event_title}</h4>
-                        <div className="date-and-time-container">
-                          <h4> Date: {eventData.date}</h4>
-                          <h4> Time: {eventData.time}</h4>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
-            <div className="row"> 
-              <div className="column"> 
-                <div className="event-img">
-                  <img 
-                  src={eventData.image_url}
-                  alt="User inputted description."
-                  style={{
-                    width: "700px",
-                    height: "450px",
-                  }}
                   />
-                    <div className="event-info"> 
-                      <h4> {eventData.event_title}</h4>
-                      <div className="date-and-time-container">
-                        <h4> Date: {eventData.date}</h4>
-                        <h4> Time: {eventData.time}</h4>
-                      </div>
-                    </div>
+                </div>
+                <div className="date-and-time-container">
+                  <h4> Date: {event.date}</h4>
+                  <h4> Time: {event.time}</h4>
                 </div>
               </div>
-
-              <div className="column"> 
-                <div className="event-img">
-                  <img 
-                  src={eventData.image_url}
-                  alt="User inputted description."
-                  style={{
-                    width: "700px",
-                    height: "450px",
-                  }}
-                  />
-                    <div className="event-info"> 
-                      <h4> {eventData.event_title}</h4>
-                      <div className="date-and-time-container">
-                        <h4> Date: {eventData.date}</h4>
-                        <h4> Time: {eventData.time}</h4>
-                      </div>
-                    </div>
-                 </div>
-              </div>
-
-                <div className="column"> 
-                  <div className="event-img">
-                    <img 
-                    src={eventData.image_url}
-                    alt="User inputted description."
-                    style={{
-                      width: "700px",
-                      height: "450px",
-                    }}
-                    />
-                      <div className="event-info"> 
-                        <h4> {eventData.event_title}</h4>
-                        <div className="date-and-time-container">
-                          <h4> Date: {eventData.date}</h4>
-                          <h4> Time: {eventData.time}</h4>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
+            ))}
           </div>
-          
-    )
-};
+        </div>
+      )}
+
+      {selectEvent && <RSVPButton event={selectEvent} />}
+    </>
+  );
+}
 
 export default CommunityPage;
