@@ -1,62 +1,73 @@
+.exit {
+  float: right;
+  font-size: 1.5em;
+  margin-bottom: 2%;
+  color: black;
+  font-family: "Bree Serif";
+}
+
+.exit:hover {
+  color: #387df5;
+}
+
 .rsvp-event {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 4rem 0;
+  font-family: "Bree Serif";
 }
 
 .user-info {
-    background: #F8F8F8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem;
-    width: 35rem;
-    border-radius: 1rem;
-    box-shadow: 2px 8px 4px #D8D8D8;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+  width: 35rem;
+  border-radius: 1rem;
+  box-shadow: 2px 8px 4px #d8d8d8;
 }
 
-.image-container{
-  margin: 0 auto; 
+.image-container {
+  margin: 0 auto;
 }
 
 .event-title {
   text-align: center;
   font-size: 2.5em;
-  
 }
 
-.location-description{
+.location-description {
   text-align: center;
   font-size: 1.5em;
 }
-.contact-container{
-  display:flex;
+.contact-container {
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 1.5em;
 }
- .date-time-container, .max-rsvp-container {
-  display:flex;
+.date-time-container,
+.max-rsvp-container {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.5em;
-
 }
 
- .rsvp-button:hover {
+.rsvp-button:hover {
   background-color: #387df5;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 .rsvp-button:active {
   background-color: rgb(95, 116, 135);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-} 
+}
 
-.rsvp-button {  
-  background-color: #2A5DB7;
+.rsvp-button {
+  background-color: #2a5db7;
   color: white;
   font-size: 1.3rem;
   text-decoration: none;
@@ -70,10 +81,11 @@
   margin-top: 7%;
   width: 20%;
   align-items: center;
+  font-family: "Bree Serif";
 }
 
 @media (max-width: 768px) {
   .rsvp-event {
-    width:  100%;
+    width: 100%;
   }
 }
