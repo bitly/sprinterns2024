@@ -35,6 +35,10 @@ func main() {
 	api.GET("/event/:eventID", handlers.GetEvent)
 	api.OPTIONS("/event/:eventID", handlers.HandleCors)
 
+	//UPDATE an event
+	api.PUT("/update-event/:eventID", handlers.UpdateEventByEventId)
+	api.OPTIONS("/update-event/:eventID", handlers.HandleCors)
+
 	//CREATE an RSVP 
 	api.POST("/rsvps", handlers.CreateRSVP)
 	api.OPTIONS("/rsvps", handlers.HandleCors)
@@ -50,6 +54,7 @@ func main() {
 	//Create Host
 	api.POST("/hosts", handlers.CreateHost)
 	api.OPTIONS("/hosts", handlers.HandleCors)
+
 
 	// Start and run the server
 	router.Run(":3000")

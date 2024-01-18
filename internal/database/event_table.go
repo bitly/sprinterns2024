@@ -88,8 +88,6 @@ func CreateRSVP(rsvp models.RSVP) (*models.RSVP, error) {
 		return &rsvps[0], nil
 }
 
-
-
 // create a function for getting RSVPS by eventID
 // we are passing in eventID in as a paramter 
 // we want an array of the RSVP model to be returned, as well as an error if we encounter one
@@ -145,5 +143,19 @@ func GetAllPublicEvents() ([]models.Event, error) {
     }
 
     return publicEvents, nil
+}
+
+
+// function to update an event by eventId
+func UpdateEventByEventId(eventID int, updatedEvent models.Event) (*models.Event, error) {
+	_, err := dbmap.Exec(
+		"UPDATE event SET title = ?, date = ?, time = ?, location = ?, host_name = ?, description = ?, contact_info = ?, public_private = ?, num_of_RSVP = ?, max_attendees = ?, image_url = ?, event_type = ? WHERE event_id = ?", 
+		updatedEvent.EventTitle, updatedEvent.Date, updatedEvent.Time, updatedEvent.Location, updatedEvent.HostName, updatedEvent.Description, updatedEvent.ContactInfo, updatedEvent.PublicPrivate, updatedEvent.NumRSVP, updatedEvent.MaxAttendees, updatedEvent.ImageURL, updatedEvent.EventType, eventID)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &updatedEvent, nil
 }
 
