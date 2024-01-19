@@ -209,5 +209,5 @@ func UpdateEventByEventId(c *gin.Context) {
 		return
 	}
 
-	c.JSON(202, updatedEvent) //update accepted - success 
+	c.JSON(201, updatedEvent) //update created - success 
 }
