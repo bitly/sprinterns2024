@@ -54,6 +54,9 @@ func main() {
 	//Create Host
 	api.POST("/hosts", handlers.CreateHost)
 	api.OPTIONS("/hosts", handlers.HandleCors)
+	//Get events by field
+	api.GET("/events-by-field", handlers.GetEventsByField)
+	api.OPTIONS("/events-by-field", handlers.HandleCors)
 
 
 	// Start and run the server

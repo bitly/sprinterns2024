@@ -179,8 +179,6 @@ func CreateHost(c *gin.Context) {
 	c.JSON(201, createdHost) //success
 }
 
-
-
 // updating an event
 func UpdateEventByEventId(c *gin.Context) {
 	setCors(c)
@@ -211,3 +209,28 @@ func UpdateEventByEventId(c *gin.Context) {
 
 	c.JSON(201, updatedEvent) //update created - success 
 }
+
+func GetEventsByField(c *gin.Context) {
+    setCors(c)
+
+    // Retrieve the field and value from query parameters
+    field := c.Query("field")
+    value := c.Query("value")
+
+    // Validate that both field and value are provided
+    if field == "" || value == "" {
+        c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "Both 'field' and 'value' query parameters are required"})
+        return
+    }
+
+    // Fetch events from the database based on the specified field and value
+    filteredEvents, err := eventsdb.GetEventsByField(field, value)
+    if err != nil {
+        fmt.Printf("ERROR: %+v", err)
+        c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+        return
+    }
+
+    c.JSON(http.StatusOK, filteredEvents) //success - return the list of filtered events
+}
+
