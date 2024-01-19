@@ -58,6 +58,9 @@ func main() {
 	api.GET("/events-by-field", handlers.GetEventsByField)
 	api.OPTIONS("/events-by-field", handlers.HandleCors)
 
+	//GET ALL HOSTS
+	api.GET("/get-all-hosts", handlers.GetAllHosts)
+	api.OPTIONS("/get-all-hosts", handlers.HandleCors)
 
 	// Start and run the server
 	router.Run(":3000")

@@ -234,3 +234,16 @@ func GetEventsByField(c *gin.Context) {
     c.JSON(http.StatusOK, filteredEvents) //success - return the list of filtered events
 }
 
+func GetAllHosts(c *gin.Context) {
+    setCors(c)
+
+    // Fetch all hosts from the database
+    hosts, err := eventsdb.GetAllHosts()
+    if err != nil {
+        fmt.Printf("ERROR: %+v", err)
+        c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+        return
+    }
+
+    c.JSON(200, hosts) //success - return the list of hosts
+}
