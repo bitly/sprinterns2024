@@ -78,7 +78,7 @@ function HostProfilePage() {
            
             <div className="list-events">
                 <h2> Upcoming Events!</h2>
-                <ol> 
+                <ol className="list-events"> 
                     {eventData.map((event) => (
                         <li key={event.event_id}>
                             <div className="row">
