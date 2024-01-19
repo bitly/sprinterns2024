@@ -3,7 +3,7 @@ package models
 type Event struct {
 	EventID       int    `json:"event_id,omitempty"`
 	NumRSVP       int    `json:"num_of_RSVP"`
-	EventTitle    string `json:"event_title"`
+	EventTitle    string `json:"title"`
 	Date          string `json:"date" `
 	Time          string `json:"time" `
 	Location      string `json:"location" `
