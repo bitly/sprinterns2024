@@ -1,3 +1,7 @@
+.profile-page {
+  margin: 6rem;
+}
+
 .row{
   display:flex;
   margin:auto;
@@ -19,8 +23,8 @@ padding-right: 2rem;
 }
 
 .img-container{
-  width: 450px;
-  height: 300px;
+  width: 34.375rem;
+  height:25rem;
   overflow:hidden;
   margin-left: 9rem;
 }
@@ -48,12 +52,13 @@ img{
 .list-events{
   padding: 5rem;
   font-size: 3rem;
-  background-color: #ffeadf;
+  /* background-color: #ffeadf; */
 }
 
 .list-events ol {
   list-style-type: none;
   counter-reset: custom-counter;
+  padding: 2rem;
 }
 
 .list-events li {
@@ -70,16 +75,26 @@ img{
   margin-right: 1.75rem; 
   font-weight: bold;
 }
+
+.list-events li:nth-child(odd) {
+  padding: 2rem;
+  background-color: #ffbc95;
+}
+
+.list-events li:nth-child(even) {
+  padding: 2rem;
+}
+
 .event-info{
   text-align: left;
-  line-height: 0;
+  line-height: 3rem;
   margin: 1rem;
-  font-size: 1rem;
+  font-size: 1.75rem;
 }
 
 .pin-event-info{
   text-align: left;
-  line-height: 0;
+  line-height: 3rem;
   margin: 1rem;
   font-size: 2rem;
 }

@@ -8,8 +8,6 @@ function HostProfilePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
-
-
   useEffect(() => {
     const getEvents = async () => {
       try {
@@ -30,6 +28,10 @@ function HostProfilePage() {
   }, []);
 
   const pinnedEvent = eventData.length > 0 ? eventData[0] : null;
+  const hostInfo = {
+    host_name: 'Name of the Host',
+    contact_info: 'Contact info of host',
+  }
 
     return(
         <div className="profile-page">
@@ -42,8 +44,8 @@ function HostProfilePage() {
                         />
                     </div>
                     <div className="host-info">
-                        <h3> {eventData.host_name}</h3>
-                        <h3> {eventData.contact_info}</h3>
+                        <h3> {hostInfo.host_name}</h3>
+                        <h3> {hostInfo.contact_info}</h3>
                     </div>
                 </div>
                 
@@ -51,21 +53,27 @@ function HostProfilePage() {
             <div className="row">
                 <div className="pin-event">
                     <div className="row">
-                    {pinnedEvent && (
-              <div key={pinnedEvent.event_id} className="pin-img-container">
-                <img src={pinnedEvent.image_url} alt="Description of pinned event." />
-              </div>
-            )}
+                        {pinnedEvent && (
+                        <div key={pinnedEvent.event_id} className="pin-img-container">
+                            <img src={pinnedEvent.image_url} alt="Description of pinned event." />
+                        </div>
+                    )}
                         <div className="pin-event-info">
-                        <div className="pin-header">
-                            <h3>{eventData.event_title} in X days! Don't miss it!</h3>
+                            {pinnedEvent ? (
+                                <div>
+                            <div className="pin-header">
+                                <h3>{pinnedEvent.event_title} in X days! Don't miss it!</h3>
+                            </div>
+                            <h3>Description: {pinnedEvent.description}</h3>
+                            <h3>Date: {pinnedEvent.date}</h3>
+                            <h3>Time: {pinnedEvent.time}</h3>
                         </div>
-                        <h3>Description: {eventData.description}</h3>
-                        <h3>Date: {eventData.date}</h3>
-                        <h3>Time: {eventData.time}</h3>
-                        </div>
+                    ) : (
+                        <p> Event couldn't load sorry!</p>
+                    )}
                     </div>
                     </div>
+                </div>
             </div>
            
             <div className="list-events">
@@ -85,7 +93,7 @@ function HostProfilePage() {
                                     <h3>Date: {event.date}</h3>
                                     <h3>Time: {event.time}</h3>
                                  </div> 
-                                </div>
+                            </div>
                         </li>
                     ))}
                 </ol>
