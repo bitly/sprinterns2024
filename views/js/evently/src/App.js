@@ -13,6 +13,7 @@ import AboutUs from './AboutUs.jsx';
 import RSVPForm from "./RSVPForm.jsx";
 import RSVPButton from "./RSVPButton.jsx";
 import RSVPList from "./RSVPList.jsx";
+import CreateHost from "./CreateHost.jsx"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/rsvp-form/:eventTitle" element={<RSVPForm/>} />
         <Route path="rsvp-list" element={<RSVPList/>} />
+        <Route path="/create-host" element={<CreateHost/>} />
       </Routes>
     </div>
   );
