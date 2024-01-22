@@ -79,6 +79,11 @@
   font-family: "Bree Serif";
 }
 
+.rsvp-submit-btn:hover {
+  background-color: #387df5;
+  cursor: pointer;
+}
+
 .alert {
   display: flex;
   justify-content: center;

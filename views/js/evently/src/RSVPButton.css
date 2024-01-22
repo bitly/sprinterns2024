@@ -84,6 +84,13 @@
   font-family: "Bree Serif";
 }
 
+.btns {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
 @media (max-width: 768px) {
   .rsvp-event {
     width: 100%;
