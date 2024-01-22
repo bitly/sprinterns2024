@@ -170,6 +170,7 @@ func UpdateEventByEventId(eventID int, updatedEvent models.Event) (*models.Event
 
 
 func GetEventsByField(field, value string) ([]models.Event, error) {
+<<<<<<< HEAD
 
 	var filteredEvents []models.Event
 
@@ -181,6 +182,18 @@ func GetEventsByField(field, value string) ([]models.Event, error) {
 	}
 	defer rows.Close()
 
+=======
+	var filteredEvents []models.Event
+
+	// Query the database to fetch events based on the specified field and value
+	query := "SELECT event_id, num_of_RSVP, title, date, time, location, host_name, description, contact_info, public_private, max_attendees, image_url, event_type, host_id FROM event WHERE " + field + "=?"
+	rows, err := dbmap.Query(query, value)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+>>>>>>> 2277897 (host id randomly generates when creating an event)
 	for rows.Next() {
 		var event models.Event
 		err := rows.Scan(
@@ -192,7 +205,13 @@ func GetEventsByField(field, value string) ([]models.Event, error) {
 		}
 		filteredEvents = append(filteredEvents, event)
 	}
+<<<<<<< HEAD
 
 	return filteredEvents, nil
 }
 
+=======
+
+	return filteredEvents, nil
+}
+>>>>>>> 2277897 (host id randomly generates when creating an event)
