@@ -2,7 +2,7 @@ import React from 'react'
 import './AboutUs.css'
 import profileImage1 from './profile_img.jpg'; // Import your profile images
 import profileImage2 from './profile_img.jpg';
-import profileImage3 from './profile_img.jpg';
+import profileImage3 from './sanjida.jpeg';
 import profileImage4 from './profile_img.jpg';
 
 
@@ -43,13 +43,13 @@ function AboutUs() {
            </div>
            <div className="container-1">
                 <div className="profileImages-1">
-                    <img src={profileImage1} alt="Person 1" />
+                    <img src={profileImage3} alt="Person 1" />
                 </div>
                 <div className="personInfo-1">
                     <h2>Sanjida Kazi</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quas, sapiente, dignissimos eveniet provident non error, beatae dolorum cum doloremque molestias? Repudiandae sint saepe suscipit! Magnam saepe accusantium ullam aliquid labore debitis. Nulla culpa dicta repellat ex temporibus soluta magnam. Nostrum adipisci optio pariatur omnis dolorum voluptate! Tempore, aut. Veritatis?</p>
-                    <p>Connect with me on LinkedIn!</p>
-                    <a href="#">LinkedIn</a>
+                    <p> Hello! I'm currently a freshman at Hunter College majoring in computer science. I am Bengali-American and live in the Bronx. In my free time, I like to watch shows, cook, and play guitar. I am glad to be apart of the sprinternship at Bitly this year, it was a great learning experience and I got to meet so many talented people. </p>
+                    <p>Add me on LinkedIn!</p>
+                    <a href="https://www.linkedin.com/in/sanjida-kazi-a71a5b2a0/">LinkedIn</a>
                 </div>
            </div>
            <div className="container-2">
