@@ -59,13 +59,8 @@ function AboutUs() {
                 </div>
                 <div className="personInfo-2">
                     <h2>Vidiya Dawah</h2>
-<<<<<<< HEAD
                     <p>Hello! I'm Vid, a junior at Baruch majoring in CIS who has interned here at Bitly! I like learning new things and this experience has taught me a lot of technical skills and a lot of things about myself. And I got to meet a lot of cool people here at Bitly.</p>
                     <p>Let's link up on LinkedIn</p>
-=======
-                    <p>Hello! I'm Vid, a junior at Baruch majoring in CIS who has interned here at Bitly!</p>
-                    <p>Let's link up on LinkedIn!</p>
->>>>>>> c7bb957 (committing so i can switch branches)
                     <a href="https://www.linkedin.com/in/vidiya-dawah-79a783282/">LinkedIn</a>
                 </div>
            </div>
