@@ -6,25 +6,21 @@ import { useNavigate, Link } from "react-router-dom";
 
 function CommunityPage() {
   const [eventData, setEventDetails] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectEvent, setSelectEvent] = useState(null);
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
     axios
       .get(`http://localhost:3000/api/public-events`)
       .then((response) => {
         setEventDetails(response.data);
-        setIsLoading(false);
       })
       .catch((error) => {
         setError(
           "The server ran into an error getting the events, please try again!"
         );
         setError(error);
-        setIsLoading(false);
       });
   }, []);
 
@@ -48,13 +44,11 @@ function CommunityPage() {
 
         <div className="link-container">
           <button className="btn"> All Events </button>
-          <button className="btn"> Birthday </button>
-          <button className="btn"> Wedding </button>
-          <button className="btn"> Graduation </button>
-          <button className="btn"> Anniversary </button>
+          <button className="btn"> Social </button>
+          <button className="btn"> Business </button>
+          <button className="btn"> Education </button>
+          <button className="btn"> Arts & Recreation </button>
         </div>
-
-        <div className="filter-btn"></div>
       </div>
 
       {error ? (
@@ -74,7 +68,7 @@ function CommunityPage() {
                 className="event-card"
                 onClick={() => handleEventClick(event)}
               >
-                <p className="event-card-title"> {event.event_title}</p>
+                <p className="event-card-title"> {event.title}</p>
                 <div className="event-img">
                   <img
                     src={

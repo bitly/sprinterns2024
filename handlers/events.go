@@ -178,6 +178,38 @@ func CreateHost(c *gin.Context) {
 
 	c.JSON(201, createdHost) //success
 }
+
+// updating an event
+func UpdateEventByEventId(c *gin.Context) {
+	setCors(c)
+	
+	var updatedEventData models.Event
+
+	eventID := c.Param("eventID")
+	intEventID, err := strconv.Atoi(eventID)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) 
+		return
+	}
+
+	// Call BindJSON to bind the received JSON to event +add error handling later
+	if err := c.BindJSON(&updatedEventData); err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusBadRequest, nil) //bad data
+		return
+	}
+
+	updatedEvent, err := eventsdb.UpdateEventByEventId(intEventID, updatedEventData)
+	if err != nil {
+		fmt.Printf("ERROR: %+v", err)
+		c.IndentedJSON(http.StatusInternalServerError, nil) //server error
+		return
+	}
+
+	c.JSON(201, updatedEvent) //update created - success 
+}
+
 func GetEventsByField(c *gin.Context) {
     setCors(c)
 
@@ -201,3 +233,4 @@ func GetEventsByField(c *gin.Context) {
 
     c.JSON(http.StatusOK, filteredEvents) //success - return the list of filtered events
 }
+

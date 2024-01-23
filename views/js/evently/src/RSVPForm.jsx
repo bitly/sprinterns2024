@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./RSVPForm.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function RSVPForm() {
-  const [eventId, setEventId] = useState("");
+  const {eventId} = useParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -11,6 +12,7 @@ export default function RSVPForm() {
   const [RSVPResponse, setRSVPResponse] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
+  const navigateTo = useNavigate();
 
   const handleRSVPSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,11 @@ export default function RSVPForm() {
       if (res.status === 201) {
         setSuccessMessage("RSVP submitted!");
         setTimeout(window.location.replace("/community-page"), 4000);
-      } else if (res.status === 500) {
+      } 
+      if (res.status === 400) {
+        setError("Maximum # of Attendees have been met!")
+      }
+      else if (res.status === 500) {
         setError("Please complete all fields!");
       }
     } catch(err) {
@@ -39,31 +45,28 @@ export default function RSVPForm() {
     }
   };
 
+  const handleEventDetailsNavigation = (e) => {
+    e.preventDefault();
+    navigateTo(`/RSVP/${eventId}`)
+  }
+
   return (
     <>
       <div className="create-rsvp">
         <div className="rsvp-form-container">
           <form className="rsvp-form" onSubmit={handleRSVPSubmit}>
-            <Link to="/community-page">
-              <span className="exit"> X </span>
-            </Link>
+            <span className="exit-click" onClick={handleEventDetailsNavigation}> X </span>
             <h2 className="rsvp-title">Register Here</h2>
 
             <div className="eventid-rsvp-container">
-              <div className="eventId">
-                <label> Event ID: </label>
-                <input type="number" className="rsvp-input-boxes" value={eventId} onChange={(e) => setEventId(e.target.value)}/>
-              </div>
-
-              <div className='response-container'>
-                  <label> RSVP: </label>
-                      <select className = "rsvp-input-boxes" value={RSVPResponse} onChange={(e) => setRSVPResponse(e.target.value)}>
-                          <option name=" " value=" " >  </option>
-                          <option name="yes" value="yes" > Yes </option>
-                          <option name="no" value="no" > No </option>
-                          <option name="maybe" value="maybe" > Maybe </option>
-                        </select>
-                </div>
+              <div className="response-container">
+                <label> RSVP: </label>
+                  <select className="rsvp-input-boxes" value={RSVPResponse} onChange={(e) => setRSVPResponse(e.target.value)}>
+                    <option name=" " value=" " >  </option>
+                    <option name="yes" value="yes"> Yes </option>
+                    <option name="no" value="no"> No </option>
+                    <option name="maybe" value="maybe"> Maybe </option>
+                </select>
               </div>
 
             <div className="first-last-name-container">

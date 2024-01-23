@@ -8,7 +8,6 @@ function RSVPButton() {
   const { eventId } = useParams();
   const [eventData, setEventDetails] = useState([]);
   const [error, setError] = useState("");
-  const [eventTitle, setEventTitle] = useState(""); 
   const navigateTo = useNavigate();
 
   const eventDateTime = new Date(eventData.date + " " + eventData.time);
@@ -30,7 +29,6 @@ function RSVPButton() {
         );
         const eventData = await response.json();
         setEventDetails(eventData);
-        setEventTitle(eventData.event_title);
       } catch (error) {
         setError(
           "The server ran into an error getting the events, please try again!"
@@ -42,7 +40,12 @@ function RSVPButton() {
 
   const handleRSVP = (e) => {
     e.preventDefault();
-    navigateTo(`/rsvp-form/${eventTitle}`, { state: { eventTitle} });
+    navigateTo(`/rsvp-form/${eventData.event_id}`);
+  };
+
+  const handleUpdateEvent = (e) => {
+    e.preventDefault();
+    navigateTo(`/update-event/${eventData.event_id}`);
 
   };
 
@@ -84,9 +87,9 @@ function RSVPButton() {
               </div>
 
               <div className="contact-container">
-                <p> Event ID: {eventData.event_id}</p>
                 <p> Host Name: {eventData.host_name}</p>
                 <p>Contact: {eventData.contact_info}</p>
+                <p>Event Type: {eventData.event_type}</p>
               </div>
 
               <div className="date-time-container">
@@ -100,7 +103,10 @@ function RSVPButton() {
               </div>
             </div>
 
+          <div className="btns">
             <button className="rsvp-button" onClick={handleRSVP}> RSVP! </button>
+            <button className="update-button" onClick={handleUpdateEvent}> Update </button>
+          </div>
           </>
         )}
       </div>
