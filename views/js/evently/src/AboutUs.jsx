@@ -59,7 +59,7 @@ function AboutUs() {
                 </div>
                 <div className="personInfo-2">
                     <h2>Vidiya Dawah</h2>
-                    <p>Hello! I'm Vid, a junior at Baruch majoring in CIS who has interned here at Bitly!</p>
+                    <p>Hello! I'm Vid, a junior at Baruch majoring in CIS who has interned here at Bitly! I like learning new things and this experience has taught me a lot of technical skills and a lot of things about myself. And I got to meet a lot of cool people here at Bitly.</p>
                     <p>Let's link up on LinkedIn</p>
                     <a href="https://www.linkedin.com/in/vidiya-dawah-79a783282/">LinkedIn</a>
                 </div>
