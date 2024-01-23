@@ -8,6 +8,7 @@ function CreateHost() {
     const [Email, setEmail] = useState("");
     const [Link, setLink] = useState("");
     const [ProfileImage, setProfileImage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,7 +20,11 @@ function CreateHost() {
               first_name: Name, phone_number: Phone, email: Email
             }),
           });
-        }
+          if (res.status === 201) {
+            setSuccessMessage("Host Profile created!")
+            setTimeout(window.location.replace("/create-event"), 4000);
+           }
+         }
         catch (err){
           console.log(err);
         }
