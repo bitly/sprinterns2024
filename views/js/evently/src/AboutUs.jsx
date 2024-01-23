@@ -4,6 +4,8 @@ import profileImage1 from './profile_img.jpg'; // Import your profile images
 import profileImage2 from './Lameya.jpg';
 import profileImage3 from './sanjida.jpeg';
 import profileImage4 from './profile_img.jpg';
+import IdenAmoako from './Images/IdenAmoako.jpeg'
+
 
 function AboutUs() {
     return (
@@ -64,13 +66,15 @@ function AboutUs() {
            </div>
            <div className="container-1">
                 <div className="profileImages-1">
-                    <img src={profileImage1} alt="Person 1" />
+                    <img src={IdenAmoako} alt="Picture of Iden Amoako" />
                 </div>
                 <div className="personInfo-1">
                     <h2>Iden Amoako</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quas, sapiente, dignissimos eveniet provident non error, beatae dolorum cum doloremque molestias? Repudiandae sint saepe suscipit! Magnam saepe accusantium ullam aliquid labore debitis. Nulla culpa dicta repellat ex temporibus soluta magnam. Nostrum adipisci optio pariatur omnis dolorum voluptate! Tempore, aut. Veritatis?</p>
+                    <p> Hi, I'm Iden. I am a third year undergraduate student pursuing a Bachelor of Business Administration in Computer Information Systems at Baruch College, with a minor in Interdisciplinary Studies at The Macaulay Honors College. 
+                        I am an aspriring Software Engineer/Full Stack Developer & Technical Product Manager.
+                        </p>
                     <p>Connect with me on LinkedIn!</p>
-                    <a href="#">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/iden-amoako/">LinkedIn</a>
                 </div>
            </div>    
         </div>
