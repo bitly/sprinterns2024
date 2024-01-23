@@ -3,8 +3,8 @@ import './AboutUs.css'
 import profileImage1 from './profile_img.jpg'; // Import your profile images
 import profileImage2 from './Lameya.jpg';
 import profileImage3 from './sanjida.jpeg';
-import profileImage4 from './profile_img.jpg';
 import IdenAmoako from './Images/IdenAmoako.jpeg'
+import profileImage4 from './VidiyaDawah.jpg';
 
 
 function AboutUs() {
@@ -55,13 +55,13 @@ function AboutUs() {
            </div>
            <div className="container-2">
                 <div className="profileImages-2">
-                    <img src={profileImage1} alt="Person 1" />
+                    <img src={profileImage4} alt="Person 1" />
                 </div>
                 <div className="personInfo-2">
                     <h2>Vidiya Dawah</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quas, sapiente, dignissimos eveniet provident non error, beatae dolorum cum doloremque molestias? Repudiandae sint saepe suscipit! Magnam saepe accusantium ullam aliquid labore debitis. Nulla culpa dicta repellat ex temporibus soluta magnam.</p>
-                    <p>Let's link up on LinkedIn!</p>
-                    <a href="#">LinkedIn</a>
+                    <p>Hello! I'm Vid, a junior at Baruch majoring in CIS who has interned here at Bitly! I like learning new things and this experience has taught me a lot of technical skills and a lot of things about myself. And I got to meet a lot of cool people here at Bitly.</p>
+                    <p>Let's link up on LinkedIn</p>
+                    <a href="https://www.linkedin.com/in/vidiya-dawah-79a783282/">LinkedIn</a>
                 </div>
            </div>
            <div className="container-1">
