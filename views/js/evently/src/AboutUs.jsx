@@ -59,7 +59,7 @@ function AboutUs() {
                 <div className="personInfo-2">
                     <h2>Vidiya Dawah</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quas, sapiente, dignissimos eveniet provident non error, beatae dolorum cum doloremque molestias? Repudiandae sint saepe suscipit! Magnam saepe accusantium ullam aliquid labore debitis. Nulla culpa dicta repellat ex temporibus soluta magnam.</p>
-                    <p>Let's link up on LinkedIn</p>
+                    <p>Let's link up on LinkedIn!</p>
                     <a href="#">LinkedIn</a>
                 </div>
            </div>
