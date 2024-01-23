@@ -20,6 +20,9 @@ function Header() {
             <Link to="/create-event" className="nav-links">Create</Link>
           </li>
           <li>
+            <Link to="/hosts" className="nav-links">Hosts</Link>
+          </li>
+          <li>
             <Link to="/community-page" className="nav-links">Community</Link>
           </li>
           <li>

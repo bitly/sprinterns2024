@@ -36,3 +36,23 @@ func CreateHost(host models.Host) (*models.Host, error) {
 
 		return &hosts[0], nil
 }
+func GetAllHosts() ([]models.Host, error) {
+    var hosts []models.Host
+
+    // Query the database to fetch all hosts
+    rows, err := dbmap.Query("SELECT host_id, first_name, last_name, email, image_url FROM host")
+    if err != nil {
+        return nil, err
+    }
+    defer rows.Close()
+
+    for rows.Next() {
+        var host models.Host
+        err := rows.Scan(&host.HostID, &host.FirstName, &host.LastName, &host.Email, &host.ImageURL)
+        if err != nil {
+            return nil, err
+        }
+        hosts = append(hosts, host)
+    }
+    return hosts, nil
+}

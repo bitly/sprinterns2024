@@ -15,7 +15,7 @@ import RSVPButton from "./RSVPButton.jsx";
 import UpdateEventForm from "./UpdateEventForm.jsx";
 import RSVPList from "./RSVPList.jsx";
 import CreateHost from "./CreateHost.jsx"
-
+import HostList from "./HostList.jsx"; // Import the new component
 
 function App() {
   return (
@@ -30,6 +30,8 @@ function App() {
         <Route path="/rsvp-form/:eventId" element={<RSVPForm/>} />
         <Route path="/update-event/:eventId" element={<UpdateEventForm />} />
         <Route path="/create-host" element={<CreateHost/>} />
+        <Route path="/rsvp-form/:eventTitle" element={<RSVPForm/>} />
+        <Route path="/hosts" element={<HostList />} />
       </Routes>
     </div>
   );

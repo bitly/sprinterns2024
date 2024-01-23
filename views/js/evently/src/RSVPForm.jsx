@@ -68,7 +68,7 @@ export default function RSVPForm() {
                     <option name="maybe" value="maybe"> Maybe </option>
                 </select>
               </div>
-
+            </div>
             <div className="first-last-name-container">
               <div className="first-name">
                 <label> First Name: </label>
