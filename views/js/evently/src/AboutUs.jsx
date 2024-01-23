@@ -3,8 +3,8 @@ import './AboutUs.css'
 import profileImage1 from './profile_img.jpg'; // Import your profile images
 import profileImage2 from './Lameya.jpg';
 import profileImage3 from './sanjida.jpeg';
-import profileImage4 from './profile_img.jpg';
 import IdenAmoako from './Images/IdenAmoako.jpeg'
+import profileImage4 from './VidiyaDawah.jpg';
 
 
 function AboutUs() {
@@ -55,7 +55,7 @@ function AboutUs() {
            </div>
            <div className="container-2">
                 <div className="profileImages-2">
-                    <img src={profileImage1} alt="Person 1" />
+                    <img src={profileImage4} alt="Person 1" />
                 </div>
                 <div className="personInfo-2">
                     <h2>Vidiya Dawah</h2>
