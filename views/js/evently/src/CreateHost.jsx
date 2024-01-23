@@ -17,7 +17,7 @@ function CreateHost() {
             method: "POST",
             mode: "cors",
             body: JSON.stringify({
-              first_name: Name, phone_number: Phone, email: Email
+              first_name: Name, phone_number: Phone, email: Email, image_url: Link
             }),
           });
           if (res.status === 201) {
