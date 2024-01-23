@@ -5,11 +5,19 @@ import (
 )
 
 func CreateEvent(event models.Event) (*models.Event, error) {
-	// hostrow, err := dbmap.Query(
-	// 	"SELECT host_id, first_name, last_name, email, image_url FROM host WHERE first_name =?", event.HostName)
-	_, err := dbmap.Query(
+	hostrow, err := dbmap.Query(
+		"SELECT host_id, first_name, last_name, email, image_url FROM host WHERE first_name =? LIMIT 1", event.HostName)
+	var host models.Host
+
+	for hostrow.Next() {
+		err = hostrow.Scan(&host.HostID, &host.FirstName, &host.LastName, &host.Email, &host.ImageURL)
+		if err != nil {
+			return nil, err
+		}
+	}
+	_, err = dbmap.Query(
 		"INSERT INTO event (title, date, time, location, host_name, description, contact_info, public_private, num_of_RSVP, max_attendees, image_url, event_type, host_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-		event.EventTitle, event.Date, event.Time, event.Location, event.HostName, event.Description, event.ContactInfo, event.PublicPrivate, event.NumRSVP, event.MaxAttendees, event.ImageURL, event.EventType, event.HostID)
+		event.EventTitle, event.Date, event.Time, event.Location, event.HostName, event.Description, event.ContactInfo, event.PublicPrivate, event.NumRSVP, event.MaxAttendees, event.ImageURL, event.EventType, host.HostID)
 
 	if err != nil {
 		return nil, err
