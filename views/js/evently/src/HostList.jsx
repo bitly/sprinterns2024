@@ -30,6 +30,7 @@ function HostList() {
     <div>
     <div className= "header">
         <h1>All Hosts</h1>
+        <Link to="/create-host" className="host-button"> Create Host</Link>
     </div>  
       <table>
         <thead className= "column-names">
